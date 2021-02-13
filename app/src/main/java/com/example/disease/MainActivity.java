@@ -22,7 +22,7 @@ import okhttp3.Headers;
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
-
+    // https://corona.lmao.ninja/docs/
     String url = "https://corona.lmao.ninja/v2/states?sort=&yesterday=";
 
     List<State> states;
@@ -50,8 +50,7 @@ public class MainActivity extends AppCompatActivity {
                         }
                     });
                     Log.d(TAG, "Top State: " + states.get(0).state + " " + (states.get(0).casesPerOneMillion/10000)+"%");
-                    Log.d(TAG, "Tenth State: " + states.get(1).state + " " + (states.get(10).casesPerOneMillion/10000)+"%");
-
+                    Log.d(TAG, State.listToString(states));
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

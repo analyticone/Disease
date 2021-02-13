@@ -13,6 +13,7 @@ public class State {
     public String state;
     int cases;
     public int casesPerOneMillion;
+    double casesPercent;
 
     public static final String TAG = "State";
 
@@ -20,7 +21,7 @@ public class State {
         state = jsonObject.getString("state");
         cases = jsonObject.getInt("cases");
         casesPerOneMillion = jsonObject.getInt("casesPerOneMillion");
-
+        casesPercent = casesPerOneMillion/10000.0;
         Log.d(TAG, toString());
     }
 
@@ -30,7 +31,16 @@ public class State {
                 "state='" + state + '\'' +
                 ", cases=" + cases +
                 ", casesPerOneMillion=" + casesPerOneMillion +
+                ", casesPercent=" + String.format("%.2f%%", casesPercent) +
                 '}';
+    }
+
+    public static String listToString(List<State> states)
+    {
+        String result = "\n";
+        for (State s : states)
+            result += s.toString() +"\n";
+        return result;
     }
 
     public static List<State> fromJsonArray(JSONArray jsonArray) throws JSONException {
@@ -41,5 +51,4 @@ public class State {
 
         return states;
     }
-
 }
